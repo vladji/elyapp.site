@@ -1,0 +1,43 @@
+.section {
+  display: flex;
+  gap: var(--section-padding-mob);
+
+  @media (min-width: 481px) {
+    gap: var(--section-padding-desktop);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  border: 2px solid var(--green);
+  border-radius: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.priceDescription {
+  margin-top: 8px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.priceWrapper {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.priceValue {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.priceSign {
+  font-size: 20px;
+}
