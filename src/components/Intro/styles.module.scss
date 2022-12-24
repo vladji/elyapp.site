@@ -1,0 +1,86 @@
+.card {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    background-color: #23303d;
+  }
+}
+
+.introHead {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+
+  img {
+    position: relative;
+    z-index: 0;
+    max-width: 300px;
+    border-radius: 5px;
+  }
+}
+
+.introHeadCardWrapper {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.introHeadCard {
+  position: absolute;
+  right: 0;
+  bottom: 18%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 107%;
+  background-color: var(--antiquewhite);
+
+  span {
+    font-family: var(--font-exo2);
+  }
+}
+
+.introHeadTextFirst {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.introHeadTextSecond {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.introHeadTextSecondEmphasis {
+  font-weight: 700;
+}
+
+.introHeadTextThird {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 38px;
+}
+
+.introHeadTextFourth {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30px;
+  color: #23303d;
+}
+
+.introText {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 22px;
+  line-height: 32px;
+}

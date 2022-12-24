@@ -1,0 +1,27 @@
+:root {
+  // fonts
+  --font-dancing: 'Dancing Script', cursive;
+  --font-nunito: 'Nunito Sans', sans-serif;
+  --font-exo2: 'Exo 2', sans-serif;
+  --font-caveat: 'Caveat', cursive;
+
+  // colors
+  --transparent: #0000;
+  --body-background: #fbfbfb;
+  --border-color: #23303d;
+  --card-background-color: #fff;
+  --antiquewhite: #faebd7;
+
+  // layout
+  --section-padding-desktop: 24px;
+  --section-padding-mob: 16px;
+
+  // shadows
+  --button-shadow: 0 0 3px 0 var(--border-color);
+  --card-shadow: 0 4px 12px 0 #0d234308;
+
+  // layout
+  --layout-padding-horizontal: 32px;
+
+  --border: 1px solid var(--border-color);
+}

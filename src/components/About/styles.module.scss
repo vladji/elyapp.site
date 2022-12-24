@@ -1,0 +1,31 @@
+.aboutTitle {
+  font-family: var(--font-caveat);
+  font-size: 54px;
+  line-height: 62px;
+}
+
+.aboutContent {
+  position: relative;
+  display: flex;
+
+  img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 300px;
+  }
+}
+
+.aboutText {
+  margin-top: 24px;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.aboutTextIntro {
+  max-width: 70%;
+}
+
+.aboutTextContinuing {
+  max-width: 60%;
+}
