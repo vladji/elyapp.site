@@ -1,0 +1,95 @@
+.card {
+  padding: 0 0 var(--section-padding-mob);
+
+  @media (min-width: 481px) {
+    padding: 0 0 var(--section-padding-desktop);
+  }
+}
+
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.toLeft {
+  animation: leftDirect 500ms;
+  transform: translateX(100%);
+}
+
+.toRight {
+  animation: rightDirect 500ms;
+  transform: translateX(-100%);
+}
+
+@keyframes leftDirect {
+  0% {
+    transform: translateX(0)
+  }
+  100% {
+    transform: translateX(100%)
+  }
+}
+
+@keyframes rightDirect {
+  0% {
+    transform: translateX(0)
+  }
+  100% {
+    transform: translateX(-100%)
+  }
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.prevImg {
+  left: -100%;
+  z-index: 0;
+}
+
+.currentImg {
+  left: 0;
+  z-index: 0;
+}
+
+.nextImg {
+  left: 100%;
+  z-index: 0;
+}
+
+.controlsWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.arrowButtonLeft {
+  transform: rotate(-180deg);
+}
+
+.slidePointerWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slidePointer {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+
+  &.active {
+    background: var(--green);
+  }
+}

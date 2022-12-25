@@ -12,3 +12,10 @@
   background-color: #fff;
   box-shadow: var(--button-shadow);
 }
+
+.arrowButton {
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+}

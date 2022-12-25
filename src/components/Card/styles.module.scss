@@ -1,7 +1,11 @@
 .cardWrapper {
   overflow: hidden;
-  padding: 24px;
+  padding: var(--section-padding-mob);
   border-radius: 5px;
   background-color: var(--card-background-color);
   box-shadow: var(--card-shadow);
+
+  @media (min-width: 481px) {
+    padding: var(--section-padding-desktop);
+  }
 }
