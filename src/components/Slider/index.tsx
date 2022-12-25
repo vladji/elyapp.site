@@ -1,4 +1,4 @@
-import React, { FC, useState, useRef } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import cn from 'classnames';
 import { Card } from '../Card';
 import { ArrowButton } from '../UI/Buttons/ArrowButton';
@@ -6,11 +6,12 @@ import img1 from '../../assets/slider/img.png';
 import img2 from '../../assets/slider/img_1.png';
 import img3 from '../../assets/slider/img_2.png';
 import img4 from '../../assets/slider/img_3.png';
+import { Direct } from '../../types';
 import styles from './styles.module.scss';
 
 export const Slider: FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [direct, setDirect] = useState<string>('');
+  const [direct, setDirect] = useState<Direct>(Direct.empty);
   const touchEvents = useRef({
     startX: 0,
     startY: 0,
@@ -25,15 +26,15 @@ export const Slider: FC = () => {
   const nextSlideIndex = () => (currentIndex + 1) % imgData.length;
 
   const setNextState = () => {
-    if (direct === 'toLeft') {
+    if (direct === Direct.toLeft) {
       setCurrentIndex(prevSlideIndex());
     } else {
       setCurrentIndex(nextSlideIndex());
     }
-    setDirect('');
+    setDirect(Direct.empty);
   };
 
-  const startAnimation = (direct: string) => {
+  const startAnimation = (direct: Direct) => {
     setDirect(direct);
   };
 
@@ -49,7 +50,7 @@ export const Slider: FC = () => {
 
       if (Math.abs(shiftX) < 35 || Math.abs(shiftY) > 35) return;
       else {
-        shiftX > 0 ? startAnimation('toRight') : startAnimation('toLeft');
+        shiftX > 0 ? startAnimation(Direct.toRight) : startAnimation(Direct.toLeft);
       }
     }
   };
@@ -61,8 +62,8 @@ export const Slider: FC = () => {
           onAnimationEnd={setNextState}
           className={cn(
             styles.sliderWrapper,
-            { [styles.toLeft]: direct === 'toLeft' },
-            { [styles.toRight]: direct === 'toRight' }
+            { [styles.toLeft]: direct === Direct.toLeft },
+            { [styles.toRight]: direct === Direct.toRight }
           )}
         >
           {imgData.map((img, index) => {
@@ -87,7 +88,7 @@ export const Slider: FC = () => {
         <div className={styles.controlsWrapper}>
           <ArrowButton
             className={styles.arrowButtonLeft}
-            onClick={() => startAnimation('toLeft')}
+            onClick={() => startAnimation(Direct.toLeft)}
           />
           <ul className={styles.slidePointerWrapper}>
             {imgData.map((_, index) => (
@@ -95,7 +96,7 @@ export const Slider: FC = () => {
             ))}
           </ul>
           <ArrowButton
-            onClick={() => startAnimation('toRight')}
+            onClick={() => startAnimation(Direct.toRight)}
           />
         </div>
       </Card>
