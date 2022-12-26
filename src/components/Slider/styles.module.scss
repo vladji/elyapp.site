@@ -44,20 +44,23 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  z-index: -1;
+  display: none;
 }
 
 .prevImg {
+  display: block;
   left: -100%;
   z-index: 0;
 }
 
 .currentImg {
+  display: block;
   left: 0;
   z-index: 0;
 }
 
 .nextImg {
+  display: block;
   left: 100%;
   z-index: 0;
 }

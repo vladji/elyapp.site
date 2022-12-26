@@ -4,6 +4,8 @@ import { ArrowButton } from '../UI/Buttons/ArrowButton';
 import { Direct } from '../../types';
 import styles from './styles.module.scss';
 
+const NON_APPLICABLE_SHIFT = 20;
+
 export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, className }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direct, setDirect] = useState<Direct>(Direct.empty);
@@ -30,10 +32,12 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
 
   const startAnimation = (direct: Direct) => {
     setDirect(direct);
+    document.body.style.overflowY = '';
   };
 
   const touchHandler = (e: React.TouchEvent<HTMLLIElement>, isStart: boolean) => {
     if (isStart) {
+      document.body.style.overflowY = 'hidden';
       touchEvents.current.startX = e.changedTouches[0].clientX;
       touchEvents.current.startY = e.changedTouches[0].clientY;
     } else {
@@ -42,11 +46,20 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
       const shiftX = touchEvents.current.startX - endX;
       const shiftY = touchEvents.current.startY - endY;
 
-      if (Math.abs(shiftX) < 35 || Math.abs(shiftY) > 35) {
+      if (Math.abs(shiftX) < NON_APPLICABLE_SHIFT || Math.abs(shiftY) > NON_APPLICABLE_SHIFT) {
         return;
       } else {
         shiftX > 0 ? startAnimation(Direct.toRight) : startAnimation(Direct.toLeft);
       }
+    }
+  };
+
+  const onTouchMove = (e: React.TouchEvent<HTMLLIElement>) => {
+    const startPositionY = touchEvents.current.startY;
+    const currentPositionY = e.changedTouches[0].clientY;
+    const shiftY = Math.abs(currentPositionY - startPositionY);
+    if (shiftY > NON_APPLICABLE_SHIFT) {
+      document.body.style.overflowY = '';
     }
   };
 
@@ -67,6 +80,7 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
               key={index}
               onTouchStart={(e) => touchHandler(e, true)}
               onTouchEnd={(e) => touchHandler(e, false)}
+              onTouchMove={onTouchMove}
               style={{
                 backgroundImage: `url('${img}')`
               }}
