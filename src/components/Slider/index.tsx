@@ -4,7 +4,7 @@ import { ArrowButton } from '../UI/Buttons/ArrowButton';
 import { Direct } from '../../types';
 import styles from './styles.module.scss';
 
-const NON_APPLICABLE_SHIFT = 20;
+const NON_APPLICABLE_SHIFT = 35;
 
 export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, className }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
