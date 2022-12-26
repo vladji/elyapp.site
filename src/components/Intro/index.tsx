@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import { Card } from '../Card';
-import img from '../../assets/images/elya-intro.jpg';
+import img from '../../assets/images/elya-intro-0.webp';
 import { useLang } from '../../hooks/useLang';
-
 import styles from './styles.module.scss';
 
 export const Intro: FC = () => {
@@ -10,7 +9,7 @@ export const Intro: FC = () => {
     <section>
       <Card className={styles.card}>
         <div className={styles.introHead}>
-          <img src={img} alt="Elya" />
+          <img src={img} alt="Elya" width="300" />
           <div className={styles.introHeadCardWrapper}>
             <Card className={styles.introHeadCard}>
               <span className={styles.introHeadTextFirst}>{useLang('intro.project.sub')}</span>

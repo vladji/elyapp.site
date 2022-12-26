@@ -1,22 +1,27 @@
+.card {
+  @media (min-width: 769px) {
+    position: relative;
+  }
+}
+
 .aboutContent {
-  position: relative;
   display: flex;
   margin-top: 16px;
 
   @media (min-width: 769px) {
     margin-top: 24px;
   }
+}
 
-  img {
-    display: none;
+.moodImage {
+  display: none;
 
-    @media (min-width: 769px) {
-      display: block;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      max-width: 300px;
-    }
+  @media (min-width: 769px) {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    right: var(--section-padding-desktop);
+    width: 300px;
   }
 }
 

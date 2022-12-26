@@ -1,23 +1,23 @@
 import { FC } from 'react';
 import { SliderBlock } from '../SliderBlock';
-import img1 from '../../assets/slider/results/IMG_1983.jpg';
-import img2 from '../../assets/slider/results/IMG_1984.jpg';
-import img3 from '../../assets/slider/results/IMG_1985.jpg';
-import img4 from '../../assets/slider/results/IMG_1987.jpg';
-import img5 from '../../assets/slider/results/IMG_1988.jpg';
-import img6 from '../../assets/slider/results/IMG_1989.jpg';
-import img7 from '../../assets/slider/results/IMG_1990.jpg';
-import img8 from '../../assets/slider/results/IMG_1991.jpg';
-import img9 from '../../assets/slider/results/IMG_1992.jpg';
-import img10 from '../../assets/slider/results/IMG_1993.jpg';
-import img11 from '../../assets/slider/results/IMG_1994.jpg';
-import img12 from '../../assets/slider/results/IMG_1995.jpg';
-import img13 from '../../assets/slider/results/IMG_1996.jpg';
-import img14 from '../../assets/slider/results/IMG_1997.jpg';
-import img15 from '../../assets/slider/results/IMG_1998.jpg';
-import img16 from '../../assets/slider/results/IMG_2001.jpg';
-import img17 from '../../assets/slider/results/IMG_2002.jpg';
-import img18 from '../../assets/slider/results/IMG_1997.jpg';
+import img1 from '../../assets/slider/results/IMG_1983.webp';
+import img2 from '../../assets/slider/results/IMG_1984.webp';
+import img3 from '../../assets/slider/results/IMG_1985.webp';
+import img4 from '../../assets/slider/results/IMG_1987.webp';
+import img5 from '../../assets/slider/results/IMG_1988.webp';
+import img6 from '../../assets/slider/results/IMG_1989.webp';
+import img7 from '../../assets/slider/results/IMG_1990.webp';
+import img8 from '../../assets/slider/results/IMG_1991.webp';
+import img9 from '../../assets/slider/results/IMG_1992.webp';
+import img10 from '../../assets/slider/results/IMG_1993.webp';
+import img11 from '../../assets/slider/results/IMG_1994.webp';
+import img12 from '../../assets/slider/results/IMG_1995.webp';
+import img13 from '../../assets/slider/results/IMG_1996.webp';
+import img14 from '../../assets/slider/results/IMG_1997.webp';
+import img15 from '../../assets/slider/results/IMG_1998.webp';
+import img16 from '../../assets/slider/results/IMG_2001.webp';
+import img17 from '../../assets/slider/results/IMG_2002.webp';
+import img18 from '../../assets/slider/results/IMG_1997.webp';
 
 export const ResultSlides: FC = () => {
   const imgData = [

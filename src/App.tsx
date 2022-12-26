@@ -17,8 +17,8 @@ function App() {
         <Intro />
         <About />
         <PriceBlock />
-        <ResultSlides />
         <ContactButtons />
+        <ResultSlides />
         <TestimonialsSlides />
       </main>
     </>

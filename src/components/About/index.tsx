@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { Card } from '../Card';
 import { useLang } from '../../hooks/useLang';
-import img from '../../assets/images/elya-about.png';
+import img from '../../assets/images/elya-about.webp';
 import styles from './styles.module.scss';
 
 export const About: FC = () => {
   return (
     <section>
-      <Card>
+      <Card className={styles.card}>
         <h2>{useLang('about.section')}</h2>
         <div className={styles.aboutContent}>
           <div className={styles.aboutText}>
@@ -21,7 +21,7 @@ export const About: FC = () => {
               {useLang('about.text.p5')}
             </p>
           </div>
-          <img src={img} alt="Elya" />
+          <img className={styles.moodImage} src={img} alt="Elya" width="300" />
         </div>
       </Card>
     </section>
