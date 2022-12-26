@@ -8,7 +8,7 @@ export const About: FC = () => {
   return (
     <section>
       <Card>
-        <h2 className={styles.aboutTitle}>{useLang('about.title')}</h2>
+        <h2>{useLang('about.section')}</h2>
         <div className={styles.aboutContent}>
           <div className={styles.aboutText}>
             <p className={styles.aboutTextIntro}>

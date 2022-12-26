@@ -1,15 +1,11 @@
-.card {
-  padding: 0 0 var(--section-padding-mob);
-
-  @media (min-width: 481px) {
-    padding: 0 0 var(--section-padding-desktop);
-  }
-}
-
 .sliderWrapper {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 400px;
+
+  @media (min-width: 481px) {
+    height: 700px;
+  }
 }
 
 .toLeft {
@@ -70,7 +66,15 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 24px;
+}
+
+.arrowButton {
+  display: none;
+
+  @media (min-width: 481px) {
+    display: block;
+  }
 }
 
 .arrowButtonLeft {

@@ -1,0 +1,15 @@
+.card {
+  padding: 0 0 var(--section-padding-mob);
+
+  @media (min-width: 481px) {
+    padding: 0 0 var(--section-padding-desktop);
+  }
+}
+
+.title {
+  padding: var(--section-padding-mob);
+
+  @media (min-width: 481px) {
+    padding: var(--section-padding-desktop);
+  }
+}

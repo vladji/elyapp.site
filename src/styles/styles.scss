@@ -11,6 +11,7 @@ body {
   font-family: var(--font-nunito);
   font-size: 16px;
   line-height: 22px;
+  color: var(--main-text-color);
 
   @media (min-width: 481px) {
     font-size: 18px;
@@ -25,13 +26,28 @@ main {
 section {
   max-width: 768px;
   margin: 54px auto 0;
-  padding-inline: var(--section-padding-mob);
 
   @media (min-width: 481px) {
     padding-inline: var(--section-padding-desktop);
   }
 }
 
+h2 {
+  font-family: var(--font-caveat);
+  font-size: 48px;
+  line-height: 48px;
+
+  @media (min-width: 481px) {
+    font-size: 54px;
+    line-height: 62px;
+  }
+}
+
 button {
   font-family: var(--font-nunito);
+}
+
+a {
+  text-decoration: unset;
+  color: var(--main-text-color);
 }

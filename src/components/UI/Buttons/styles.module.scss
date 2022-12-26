@@ -19,3 +19,17 @@
     height: 40px;
   }
 }
+
+.iconButton {
+  width: 40px;
+  padding: 4px;
+
+  a {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  svg {
+    flex-grow: 1;
+  }
+}

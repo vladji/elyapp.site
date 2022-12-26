@@ -15,7 +15,15 @@
 .introHead {
   position: relative;
   display: flex;
+  flex-flow: column;
   justify-content: space-around;
+  align-items: center;
+
+  @media (min-width: 769px) {
+    display: flex;
+    flex-flow: initial;
+    align-items: initial;
+  }
 
   img {
     position: relative;
@@ -31,18 +39,22 @@
   flex-grow: 1;
   justify-content: center;
   align-items: center;
+  width: 100%;
   z-index: 1;
 }
 
 .introHeadCard {
-  position: absolute;
-  right: 0;
-  bottom: 18%;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 107%;
   background-color: var(--antiquewhite);
+
+  @media (min-width: 769px) {
+    position: absolute;
+    right: 0;
+    bottom: 18%;
+  }
 
   span {
     font-family: var(--font-exo2);
@@ -82,5 +94,9 @@
   margin-top: 24px;
   text-align: center;
   font-size: 22px;
-  line-height: 32px;
+  line-height: 28px;
+
+  @media (min-width: 769px) {
+    line-height: 32px;
+  }
 }

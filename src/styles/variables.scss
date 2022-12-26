@@ -6,6 +6,7 @@
   --font-caveat: 'Caveat', cursive;
 
   // colors
+  --main-text-color: #0a0e11;
   --transparent: #0000;
   --body-background: #fbfbfb;
   --border-color: #23303d;
@@ -19,7 +20,7 @@
 
   // shadows
   --button-shadow: 0 0 3px 0 var(--border-color);
-  --card-shadow: 0 4px 12px 0 #0d234308;
+  --card-shadow: 0 4px 12px 4px #c4c4c485;
 
   // layout
   --layout-padding-horizontal: 32px;

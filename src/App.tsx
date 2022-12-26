@@ -3,7 +3,9 @@ import { Header } from './components/Header';
 import { Intro } from './components/Intro';
 import { About } from './components/About';
 import { PriceBlock } from './components/PriceBlock';
-import { Slider } from './components/Slider';
+import { ContactButtons } from './components/ContactButtons';
+import { ResultSlides } from './components/ResultSlides';
+import { TestimonialsSlides } from './components/TestimonialsSlides';
 
 import './styles/styles.scss';
 
@@ -15,7 +17,9 @@ function App() {
         <Intro />
         <About />
         <PriceBlock />
-        <Slider />
+        <ResultSlides />
+        <ContactButtons />
+        <TestimonialsSlides />
       </main>
     </>
   );
