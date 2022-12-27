@@ -5,7 +5,7 @@ import { playAnimation } from './utils';
 import { Direct } from '../../types';
 import styles from './styles.module.scss';
 
-const NON_APPLICABLE_SHIFT_Y = 50;
+const NON_APPLICABLE_SHIFT_Y = 150;
 const NON_APPLICABLE_SHIFT_X = 110;
 
 export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, className }) => {
@@ -56,6 +56,7 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
       if (shiftX === 0) return;
 
       if (Math.abs(shiftY) > NON_APPLICABLE_SHIFT_Y) {
+        onPlayAnimation({ shiftX, reverse: true });
         return;
       }
 
@@ -66,6 +67,23 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
 
       onPlayAnimation({ shiftX, reverse: false });
     }
+  };
+
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const startPositionX = touchEvents.startX;
+    const startPositionY = touchEvents.startY;
+
+    const currentPositionX = e.changedTouches[0].clientX;
+    const currentPositionY = e.changedTouches[0].clientY;
+
+    const shiftX: number = currentPositionX - startPositionX;
+    const shiftY: number = Math.abs(currentPositionY - startPositionY);
+
+    if (shiftY > NON_APPLICABLE_SHIFT_Y) {
+      document.body.style.overflowY = '';
+    }
+
+    sliderRef.current!.style.transform = `translateX(${shiftX}px)`;
   };
 
   const onPlayAnimation = ({
@@ -89,22 +107,6 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
     }));
   };
 
-  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    const startPositionX = touchEvents.startX;
-    const startPositionY = touchEvents.startY;
-
-    const currentPositionX = e.changedTouches[0].clientX;
-    const currentPositionY = e.changedTouches[0].clientY;
-
-    const shiftX: number = currentPositionX - startPositionX;
-    const shiftY: number = Math.abs(currentPositionY - startPositionY);
-
-    if (shiftY > NON_APPLICABLE_SHIFT_Y) {
-      document.body.style.overflowY = '';
-    }
-
-    sliderRef.current!.style.transform = `translateX(${shiftX}px)`;
-  };
 
   const setSlidesStyles = (clear: boolean) => {
     const index = currentIndex.index;
