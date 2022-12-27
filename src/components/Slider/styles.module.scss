@@ -8,61 +8,15 @@
   }
 }
 
-.toLeft {
-  animation: leftDirect 500ms;
-  transform: translateX(100%);
-}
-
-.toRight {
-  animation: rightDirect 500ms;
-  transform: translateX(-100%);
-}
-
-@keyframes leftDirect {
-  0% {
-    transform: translateX(0)
-  }
-  100% {
-    transform: translateX(100%)
-  }
-}
-
-@keyframes rightDirect {
-  0% {
-    transform: translateX(0)
-  }
-  100% {
-    transform: translateX(-100%)
-  }
-}
-
 .img {
   position: absolute;
+  display: none;
   top: 0;
   width: 100%;
   height: 100%;
-  background-position: center;
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
-  display: none;
-}
-
-.prevImg {
-  display: block;
-  left: -100%;
-  z-index: 0;
-}
-
-.currentImg {
-  display: block;
-  left: 0;
-  z-index: 0;
-}
-
-.nextImg {
-  display: block;
-  left: 100%;
-  z-index: 0;
 }
 
 .controlsWrapper {

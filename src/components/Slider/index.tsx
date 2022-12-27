@@ -1,121 +1,183 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, TouchEvent } from 'react';
 import cn from 'classnames';
 import { ArrowButton } from '../UI/Buttons/ArrowButton';
+import { playAnimation } from './utils';
 import { Direct } from '../../types';
 import styles from './styles.module.scss';
 
-const NON_APPLICABLE_SHIFT = 35;
+const NON_APPLICABLE_SHIFT_Y = 50;
+const NON_APPLICABLE_SHIFT_X = 110;
 
 export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, className }) => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [direct, setDirect] = useState<Direct>(Direct.empty);
-
-  const touchEvents = useRef({
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const pointerRef = useRef<HTMLUListElement>(null);
+  const { current: currentIndex } = useRef({ index: 0 });
+  const { current: touchEvents } = useRef({
     startX: 0,
     startY: 0,
   });
 
-  const prevSlideIndex = () => {
-    if (currentIndex === 0) return imgData.length - 1;
-    return currentIndex - 1;
-  };
-  const nextSlideIndex = () => (currentIndex + 1) % imgData.length;
-
-  const setNextState = () => {
-    if (direct === Direct.toLeft) {
-      setCurrentIndex(prevSlideIndex());
+  const setCurrentIndex = (direct: Direct) => {
+    if (direct === Direct.next) {
+      currentIndex.index = getNextIndex();
     } else {
-      setCurrentIndex(nextSlideIndex());
+      currentIndex.index = getPrevIndex();
     }
-    setDirect(Direct.empty);
   };
 
-  const startAnimation = (direct: Direct) => {
-    setDirect(direct);
-    document.body.style.overflowY = '';
+  const getNextIndex = (): number => (currentIndex.index + 1) % imgData.length;
+  const getPrevIndex = (): number => {
+    if (currentIndex.index === 0) {
+      return imgData.length - 1;
+    } else {
+      return currentIndex.index - 1;
+    }
   };
 
-  const touchHandler = (e: React.TouchEvent<HTMLLIElement>, isStart: boolean) => {
+  const setNextState = (direct: Direct) => {
+    setSlidesStyles(true);
+    setCurrentIndex(direct);
+    setSlidesStyles(false);
+    sliderRef.current!.style.transform = `translateX(0px)`;
+  };
+
+  const touchHandler = (e: TouchEvent<HTMLDivElement>, isStart: boolean) => {
     if (isStart) {
       document.body.style.overflowY = 'hidden';
-      touchEvents.current.startX = e.changedTouches[0].clientX;
-      touchEvents.current.startY = e.changedTouches[0].clientY;
+      touchEvents.startX = e.changedTouches[0].clientX;
+      touchEvents.startY = e.changedTouches[0].clientY;
     } else {
+      document.body.style.overflowY = '';
       const endX = e.changedTouches[0].clientX;
       const endY = e.changedTouches[0].clientY;
-      const shiftX = touchEvents.current.startX - endX;
-      const shiftY = touchEvents.current.startY - endY;
+      const shiftX = endX - touchEvents.startX;
+      const shiftY = endY - touchEvents.startY;
 
-      if (Math.abs(shiftX) < NON_APPLICABLE_SHIFT || Math.abs(shiftY) > NON_APPLICABLE_SHIFT) {
+      if (shiftX === 0) return;
+
+      if (Math.abs(shiftY) > NON_APPLICABLE_SHIFT_Y) {
         return;
-      } else {
-        shiftX > 0 ? startAnimation(Direct.toRight) : startAnimation(Direct.toLeft);
       }
+
+      if (Math.abs(shiftX) < NON_APPLICABLE_SHIFT_X) {
+        onPlayAnimation({ shiftX, reverse: true });
+        return;
+      }
+
+      onPlayAnimation({ shiftX, reverse: false });
     }
   };
 
-  const onTouchMove = (e: React.TouchEvent<HTMLLIElement>) => {
-    const startPositionY = touchEvents.current.startY;
+  const onPlayAnimation = ({
+    shiftX,
+    reverse,
+  }: {
+    shiftX: number;
+    reverse: boolean;
+  }): void => {
+    const startTime: number = Date.now();
+    const sliderWidth: number = sliderRef.current!.offsetWidth;
+    const stopPosition: number = shiftX < 0 ? -sliderWidth : sliderWidth;
+
+    requestAnimationFrame(() => playAnimation({
+      stopPosition,
+      shiftX,
+      startTime,
+      reverse,
+      sliderRef,
+      setNextState,
+    }));
+  };
+
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const startPositionX = touchEvents.startX;
+    const startPositionY = touchEvents.startY;
+
+    const currentPositionX = e.changedTouches[0].clientX;
     const currentPositionY = e.changedTouches[0].clientY;
-    const shiftY = Math.abs(currentPositionY - startPositionY);
-    if (shiftY > NON_APPLICABLE_SHIFT) {
+
+    const shiftX: number = currentPositionX - startPositionX;
+    const shiftY: number = Math.abs(currentPositionY - startPositionY);
+
+    if (shiftY > NON_APPLICABLE_SHIFT_Y) {
       document.body.style.overflowY = '';
     }
+
+    sliderRef.current!.style.transform = `translateX(${shiftX}px)`;
   };
+
+  const setSlidesStyles = (clear: boolean) => {
+    const index = currentIndex.index;
+    const prevIndex = getPrevIndex();
+    const nextIndex = getNextIndex();
+
+    const slides = sliderRef.current?.children as HTMLCollectionOf<HTMLElement>;
+    const pointers = pointerRef.current?.children as HTMLCollectionOf<HTMLElement>;
+
+    if (clear) {
+      slides[index].style.display = '';
+      slides[prevIndex].style.display = '';
+      slides[nextIndex].style.display = '';
+      pointers[index].style.backgroundColor = '';
+      return;
+    }
+
+    slides[index].style.cssText = `${slides[index].style.cssText}; display: block; left: 0`;
+    slides[prevIndex].style.cssText = `${slides[prevIndex].style.cssText}; display: block; left: -100%`;
+    slides[nextIndex].style.cssText = `${slides[nextIndex].style.cssText}; display: block; left: 100%`;
+    pointers[index].style.backgroundColor = '#14d41a';
+  };
+
+  useEffect(() => {
+    setSlidesStyles(false);
+  });
 
   return (
     <>
-      <ul
-        onAnimationEnd={setNextState}
+      <div
+        ref={sliderRef}
+        onTouchStart={(e) => touchHandler(e, true)}
+        onTouchEnd={(e) => touchHandler(e, false)}
+        onTouchMove={onTouchMove}
         className={cn(
           styles.sliderWrapper,
-          { [styles.toLeft]: direct === Direct.toLeft },
-          { [styles.toRight]: direct === Direct.toRight },
           className
         )}
       >
         {imgData.map((img, index) => {
           return (
-            <li
+            <div
               key={index}
-              onTouchStart={(e) => touchHandler(e, true)}
-              onTouchEnd={(e) => touchHandler(e, false)}
-              onTouchMove={onTouchMove}
+              className={styles.img}
               style={{
                 backgroundImage: `url('${img}')`
               }}
-              className={cn(
-                styles.img,
-                { [styles.currentImg]: index === currentIndex },
-                { [styles.prevImg]: index === prevSlideIndex() },
-                { [styles.nextImg]: index === nextSlideIndex() }
-              )}
             />
           );
         })}
-      </ul>
+      </div>
       <div className={styles.controlsWrapper}>
         <ArrowButton
           className={cn(
             styles.arrowButtonLeft,
             styles.arrowButton,
           )}
-          onClick={() => startAnimation(Direct.toLeft)}
+          onClick={() => onPlayAnimation({ shiftX: 1, reverse: false })}
         />
-        <ul className={styles.slidePointerWrapper}>
+        <ul
+          ref={pointerRef}
+          className={styles.slidePointerWrapper}
+        >
           {imgData.map((_, index) => (
             <li
               key={index}
-              className={cn(
-                styles.slidePointer,
-                { [styles.active]: index === currentIndex }
-              )}
+              className={styles.slidePointer}
             />
           ))}
         </ul>
         <ArrowButton
           className={styles.arrowButton}
-          onClick={() => startAnimation(Direct.toRight)}
+          onClick={() => onPlayAnimation({ shiftX: -1, reverse: false })}
         />
       </div>
     </>
