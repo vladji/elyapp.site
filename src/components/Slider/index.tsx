@@ -5,11 +5,11 @@ import { playAnimation } from './utils';
 import { Direct } from '../../types';
 import styles from './styles.module.scss';
 
-const NON_APPLICABLE_SHIFT_Y = 150;
-const NON_APPLICABLE_SHIFT_X = 110;
+const NON_APPLICABLE_SHIFT_Y = 80;
+const NON_APPLICABLE_SHIFT_X = 100;
 
 export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, className }) => {
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLUListElement>(null);
   const pointerRef = useRef<HTMLUListElement>(null);
   const { current: currentIndex } = useRef({ index: 0 });
   const { current: touchEvents } = useRef({
@@ -41,7 +41,7 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
     sliderRef.current!.style.transform = `translateX(0px)`;
   };
 
-  const touchHandler = (e: TouchEvent<HTMLDivElement>, isStart: boolean) => {
+  const touchHandler = (e: TouchEvent<HTMLUListElement>, isStart: boolean) => {
     if (isStart) {
       document.body.style.overflow = 'hidden';
       touchEvents.startX = e.changedTouches[0].clientX;
@@ -69,15 +69,15 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
     }
   };
 
-  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+  const onTouchMove = (e: React.TouchEvent<HTMLUListElement>) => {
     const startPositionX = touchEvents.startX;
     const startPositionY = touchEvents.startY;
 
     const currentPositionX = e.changedTouches[0].clientX;
     const currentPositionY = e.changedTouches[0].clientY;
 
-    const shiftX: number = currentPositionX - startPositionX;
-    const shiftY: number = Math.abs(currentPositionY - startPositionY);
+    const shiftX = currentPositionX - startPositionX;
+    const shiftY = Math.abs(currentPositionY - startPositionY);
 
     if (shiftY > NON_APPLICABLE_SHIFT_Y) {
       document.body.style.overflow = '';
@@ -136,7 +136,7 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
 
   return (
     <>
-      <div
+      <ul
         ref={sliderRef}
         onTouchStart={(e) => touchHandler(e, true)}
         onTouchEnd={(e) => touchHandler(e, false)}
@@ -148,7 +148,7 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
       >
         {imgData.map((img, index) => {
           return (
-            <div
+            <li
               key={index}
               className={styles.img}
               style={{
@@ -157,7 +157,7 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
             />
           );
         })}
-      </div>
+      </ul>
       <div className={styles.controlsWrapper}>
         <ArrowButton
           className={cn(

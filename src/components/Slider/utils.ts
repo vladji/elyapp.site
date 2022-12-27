@@ -6,7 +6,7 @@ interface IPlayAnimation {
   shiftX: number;
   startTime: number;
   reverse: boolean;
-  sliderRef: RefObject<HTMLDivElement>;
+  sliderRef: RefObject<HTMLUListElement>;
   setNextState: (direct: Direct) => void;
 }
 
