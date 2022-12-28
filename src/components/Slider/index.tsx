@@ -11,26 +11,38 @@ const NON_APPLICABLE_SHIFT_X = 100;
 export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, className }) => {
   const sliderRef = useRef<HTMLUListElement>(null);
   const pointerRef = useRef<HTMLUListElement>(null);
-  const { current: currentIndex } = useRef({ index: 0 });
-  const { current: touchEvents } = useRef({
-    startX: 0,
-    startY: 0,
+
+  const { current: sliderData }: {
+    current: {
+      index: number;
+      firstTouch: boolean;
+      isSlide: boolean;
+      touchEvents: {
+        startX: number;
+        startY: number;
+      }
+    }
+  } = useRef({
+    index: 0,
+    firstTouch: true,
+    isSlide: false,
+    touchEvents: { startX: 0, startY: 0 }
   });
 
   const setCurrentIndex = (direct: Direct) => {
     if (direct === Direct.next) {
-      currentIndex.index = getNextIndex();
+      sliderData.index = getNextIndex();
     } else {
-      currentIndex.index = getPrevIndex();
+      sliderData.index = getPrevIndex();
     }
   };
 
-  const getNextIndex = (): number => (currentIndex.index + 1) % imgData.length;
+  const getNextIndex = (): number => (sliderData.index + 1) % imgData.length;
   const getPrevIndex = (): number => {
-    if (currentIndex.index === 0) {
+    if (sliderData.index === 0) {
       return imgData.length - 1;
     } else {
-      return currentIndex.index - 1;
+      return sliderData.index - 1;
     }
   };
 
@@ -43,15 +55,15 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
 
   const touchHandler = (e: TouchEvent<HTMLUListElement>, isStart: boolean) => {
     if (isStart) {
-      document.documentElement.style.overflowY = 'hidden';
-      touchEvents.startX = e.nativeEvent.changedTouches[0].clientX;
-      touchEvents.startY = e.nativeEvent.changedTouches[0].clientY;
+      sliderData.firstTouch = true;
+      sliderData.touchEvents.startX = e.nativeEvent.changedTouches[0].clientX;
+      sliderData.touchEvents.startY = e.nativeEvent.changedTouches[0].clientY;
     } else {
-      document.documentElement.style.overflowY = '';
+      document.body.style.overflow = '';
       const endX = e.nativeEvent.changedTouches[0].clientX;
       const endY = e.nativeEvent.changedTouches[0].clientY;
-      const shiftX = endX - touchEvents.startX;
-      const shiftY = endY - touchEvents.startY;
+      const shiftX = endX - sliderData.touchEvents.startX;
+      const shiftY = endY - sliderData.touchEvents.startY;
 
       if (shiftX === 0) return;
 
@@ -70,8 +82,8 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
   };
 
   const onTouchMove = (e: React.TouchEvent<HTMLUListElement>) => {
-    const startPositionX = touchEvents.startX;
-    const startPositionY = touchEvents.startY;
+    const startPositionX = sliderData.touchEvents.startX;
+    const startPositionY = sliderData.touchEvents.startY;
 
     const currentPositionX = e.nativeEvent.changedTouches[0].clientX;
     const currentPositionY = e.nativeEvent.changedTouches[0].clientY;
@@ -79,11 +91,18 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
     const shiftX = currentPositionX - startPositionX;
     const shiftY = Math.abs(currentPositionY - startPositionY);
 
-    if (shiftY > NON_APPLICABLE_SHIFT_Y) {
-      document.documentElement.style.overflowY = '';
+    if (sliderData.firstTouch) {
+      sliderData.isSlide = Math.abs(shiftX) > Math.abs(shiftY);
+      sliderData.firstTouch = false;
+
+      if (sliderData.isSlide) {
+        document.body.style.overflow = 'hidden';
+      }
     }
 
-    sliderRef.current!.style.transform = `translateX(${shiftX}px)`;
+    if (sliderData.isSlide) {
+      sliderRef.current!.style.transform = `translateX(${shiftX}px)`;
+    }
   };
 
   const onPlayAnimation = ({
@@ -109,7 +128,7 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
 
 
   const setSlidesStyles = (clear: boolean) => {
-    const index = currentIndex.index;
+    const index = sliderData.index;
     const prevIndex = getPrevIndex();
     const nextIndex = getNextIndex();
 
