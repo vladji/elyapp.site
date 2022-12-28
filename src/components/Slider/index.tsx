@@ -43,11 +43,11 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
 
   const touchHandler = (e: TouchEvent<HTMLUListElement>, isStart: boolean) => {
     if (isStart) {
-      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflowY = 'hidden';
       touchEvents.startX = e.nativeEvent.changedTouches[0].clientX;
       touchEvents.startY = e.nativeEvent.changedTouches[0].clientY;
     } else {
-      document.body.style.overflow = '';
+      document.documentElement.style.overflowY = '';
       const endX = e.nativeEvent.changedTouches[0].clientX;
       const endY = e.nativeEvent.changedTouches[0].clientY;
       const shiftX = endX - touchEvents.startX;
@@ -80,7 +80,7 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
     const shiftY = Math.abs(currentPositionY - startPositionY);
 
     if (shiftY > NON_APPLICABLE_SHIFT_Y) {
-      document.body.style.overflow = '';
+      document.documentElement.style.overflowY = '';
     }
 
     sliderRef.current!.style.transform = `translateX(${shiftX}px)`;
