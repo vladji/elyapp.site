@@ -5,7 +5,7 @@ import { playAnimation } from './utils';
 import { Direct } from '../../types';
 import styles from './styles.module.scss';
 
-const NON_APPLICABLE_SHIFT_Y = 80;
+const NON_APPLICABLE_SHIFT_Y = 120;
 const NON_APPLICABLE_SHIFT_X = 100;
 
 export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, className }) => {
@@ -44,18 +44,18 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
   const touchHandler = (e: TouchEvent<HTMLUListElement>, isStart: boolean) => {
     if (isStart) {
       document.body.style.overflow = 'hidden';
-      touchEvents.startX = e.changedTouches[0].clientX;
-      touchEvents.startY = e.changedTouches[0].clientY;
+      touchEvents.startX = e.nativeEvent.changedTouches[0].clientX;
+      touchEvents.startY = e.nativeEvent.changedTouches[0].clientY;
     } else {
       document.body.style.overflow = '';
-      const endX = e.changedTouches[0].clientX;
-      const endY = e.changedTouches[0].clientY;
+      const endX = e.nativeEvent.changedTouches[0].clientX;
+      const endY = e.nativeEvent.changedTouches[0].clientY;
       const shiftX = endX - touchEvents.startX;
       const shiftY = endY - touchEvents.startY;
 
       if (shiftX === 0) return;
 
-      if (Math.abs(shiftY) > NON_APPLICABLE_SHIFT_Y) {
+      if (Math.abs(shiftY) > NON_APPLICABLE_SHIFT_Y && Math.abs(shiftX) < NON_APPLICABLE_SHIFT_X) {
         onPlayAnimation({ shiftX, reverse: true });
         return;
       }
@@ -73,8 +73,8 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
     const startPositionX = touchEvents.startX;
     const startPositionY = touchEvents.startY;
 
-    const currentPositionX = e.changedTouches[0].clientX;
-    const currentPositionY = e.changedTouches[0].clientY;
+    const currentPositionX = e.nativeEvent.changedTouches[0].clientX;
+    const currentPositionY = e.nativeEvent.changedTouches[0].clientY;
 
     const shiftX = currentPositionX - startPositionX;
     const shiftY = Math.abs(currentPositionY - startPositionY);
