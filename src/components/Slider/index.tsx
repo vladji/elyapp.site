@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 const NON_APPLICABLE_SHIFT_Y = 120;
 const NON_APPLICABLE_SHIFT_X = 100;
 
-export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, className }) => {
+const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, className }) => {
   const sliderRef = useRef<HTMLUListElement>(null);
   const pointerRef = useRef<HTMLUListElement>(null);
 
@@ -143,9 +143,9 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
       return;
     }
 
-    slides[index].style.cssText = `${slides[index].style.cssText}; display: block; left: 0`;
-    slides[prevIndex].style.cssText = `${slides[prevIndex].style.cssText}; display: block; left: -100%`;
-    slides[nextIndex].style.cssText = `${slides[nextIndex].style.cssText}; display: block; left: 100%`;
+    slides[index].style.cssText = `${slides[index].style.cssText}; z-index: 1; left: 0`;
+    slides[prevIndex].style.cssText = `${slides[prevIndex].style.cssText}; z-index: 1; left: -100%`;
+    slides[nextIndex].style.cssText = `${slides[nextIndex].style.cssText}; z-index: 1; left: 100%`;
     pointers[index].style.backgroundColor = '#14d41a';
   };
 
@@ -204,3 +204,5 @@ export const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData,
     </>
   );
 };
+
+export default Slider;

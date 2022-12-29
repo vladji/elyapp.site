@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import { FC, lazy } from 'react';
 import { Card } from '../Card';
-import { Slider } from '../Slider';
 import { useLang } from '../../hooks/useLang';
+import { useIntersection } from '../../hooks/useIntersection';
 import styles from './styles.module.scss';
+
+const Slider = lazy(() => import('../Slider'));
 
 interface SliderBlockProps {
   imgData: string[];
@@ -17,12 +19,20 @@ export const SliderBlock: FC<SliderBlockProps> = ({
   className,
   sliderClassName,
 }) => {
+  const { ref, inView } = useIntersection();
+  const sliderTitle = useLang(title);
+
   return (
-    <section className={className}>
-      <Card className={styles.card}>
-        <h2 className={styles.title}>{useLang(title)}</h2>
-        <Slider className={sliderClassName} imgData={imgData} />
-      </Card>
-    </section>
+    <>
+      <div ref={ref} />
+      {inView &&
+        <section className={className}>
+          <Card className={styles.card}>
+            <h2 className={styles.title}>{sliderTitle}</h2>
+            <Slider className={sliderClassName} imgData={imgData} />
+          </Card>
+        </section>
+      }
+    </>
   );
 };
