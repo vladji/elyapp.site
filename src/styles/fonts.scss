@@ -1,1 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700;800;900&family=Nunito+Sans:wght@400;600&display=swap');
+@font-face {
+  font-family: 'caveat';
+  src: url('../assets/fonts/Caveat/Caveat-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'exo-2-semi-bold';
+  src: url('../assets/fonts/Exo_2/static/Exo2-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'nunito';
+  src: url('../assets/fonts/Nunito_Sans/NunitoSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'dancing';
+  src: url('../assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
+}

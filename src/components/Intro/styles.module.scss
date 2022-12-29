@@ -53,32 +53,29 @@
   width: 107%;
   background-color: var(--antiquewhite);
 
+  span {
+    font-family: var(--font-exo2);
+  }
+
   @media (min-width: 769px) {
     position: absolute;
     right: 0;
     bottom: 13%;
   }
-
-  span {
-    font-family: var(--font-exo2);
-  }
 }
 
 .projectTitle {
   font-size: 22px;
-  font-weight: 600;
   line-height: 40px;
 }
 
 .projectName {
   font-size: 20px;
-  font-weight: 700;
   line-height: 38px;
 }
 
 .projectSub {
   font-size: 21px;
-  font-weight: 700;
   line-height: 32px;
   color: #23303d;
 }
