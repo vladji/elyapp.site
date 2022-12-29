@@ -136,16 +136,16 @@ const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, classN
     const pointers = pointerRef.current?.children as HTMLCollectionOf<HTMLElement>;
 
     if (clear) {
-      slides[index].style.display = '';
-      slides[prevIndex].style.display = '';
-      slides[nextIndex].style.display = '';
+      slides[index].style.visibility = '';
+      slides[prevIndex].style.visibility = '';
+      slides[nextIndex].style.visibility = '';
       pointers[index].style.backgroundColor = '';
       return;
     }
 
-    slides[index].style.cssText = `${slides[index].style.cssText}; z-index: 1; left: 0`;
-    slides[prevIndex].style.cssText = `${slides[prevIndex].style.cssText}; z-index: 1; left: -100%`;
-    slides[nextIndex].style.cssText = `${slides[nextIndex].style.cssText}; z-index: 1; left: 100%`;
+    slides[index].style.cssText = `${slides[index].style.cssText}; visibility: visible; left: 0`;
+    slides[prevIndex].style.cssText = `${slides[prevIndex].style.cssText}; visibility: visible; left: -100%`;
+    slides[nextIndex].style.cssText = `${slides[nextIndex].style.cssText}; visibility: visible; left: 100%`;
     pointers[index].style.backgroundColor = '#14d41a';
   };
 

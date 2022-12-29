@@ -17,11 +17,10 @@ import img14 from '../../assets/slider/results/IMG_1997.webp';
 import img15 from '../../assets/slider/results/IMG_1998.webp';
 import img16 from '../../assets/slider/results/IMG_2001.webp';
 import img17 from '../../assets/slider/results/IMG_2002.webp';
-import img18 from '../../assets/slider/results/IMG_1997.webp';
 
 export const ResultSlides: FC = () => {
   const imgData = [
-    img16, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img17, img18
+    img16, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img17
   ];
   return (
     <SliderBlock imgData={imgData} title="results.section" />
