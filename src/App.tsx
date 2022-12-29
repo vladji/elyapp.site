@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from './components/Header';
 import { Intro } from './components/Intro';
 import { About } from './components/About';
-import { PriceBlock } from './components/PriceBlock';
+import { ProductBlock } from './components/ProductBlock';
 import { ContactButtons } from './components/ContactButtons';
 import { ResultSlides } from './components/ResultSlides';
 import { TestimonialsSlides } from './components/TestimonialsSlides';
@@ -16,7 +16,7 @@ function App() {
       <main>
         <Intro />
         <About />
-        <PriceBlock />
+        <ProductBlock />
         <ContactButtons />
         <ResultSlides />
         <TestimonialsSlides />

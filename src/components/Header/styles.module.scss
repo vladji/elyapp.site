@@ -7,9 +7,13 @@
   align-items: center;
   justify-content: space-between;
   height: 64px;
-  padding-inline: var(--layout-padding-horizontal);
+  padding-inline: var(--layout-padding-horizontal-mob);
   background-color: #fff;
   box-shadow: 0 -15px 15px 5px var(--border-color);
+
+  @media (min-width: 481px) {
+    padding-inline: var(--layout-padding-horizontal);
+  }
 
   h1 {
     font-family: var(--font-dancing);
@@ -20,5 +24,5 @@
 
 .nav {
   display: flex;
-  gap: 8px;
+  gap: 16px;
 }

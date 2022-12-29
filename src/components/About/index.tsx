@@ -8,20 +8,13 @@ export const About: FC = () => {
   return (
     <section>
       <Card className={styles.card}>
-        <h2>{useLang('about.section')}</h2>
-        <div className={styles.aboutContent}>
-          <div className={styles.aboutText}>
-            <p className={styles.aboutTextIntro}>
-              {useLang('about.text.p1')}<br />
-              {useLang('about.text.p2')}<br />
-              {useLang('about.text.p3')}
-            </p>
-            <p className={styles.aboutTextContinuing}>
-              {useLang('about.text.p4')}<br />
-              {useLang('about.text.p5')}
-            </p>
-          </div>
-          <img className={styles.moodImage} src={img} alt="Elya" width="300" />
+        <h2 className={styles.title}>{useLang('about.title')}</h2>
+        <div className={styles.content}>
+          <p className={styles.text}>
+            {useLang('about.text.p1')}<br />
+            {useLang('about.text.p2')}
+          </p>
+          <img className={styles.moodImage} src={img} alt="Elya" width="210" height="315" />
         </div>
       </Card>
     </section>

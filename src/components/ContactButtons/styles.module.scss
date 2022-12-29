@@ -12,6 +12,10 @@
   height: 60px;
   border-radius: 20px;
 
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
   a {
     display: flex;
     align-items: center;
@@ -26,12 +30,14 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
   }
 
   svg {
     width: 44px;
+    max-height: 100%;
   }
 }
 
@@ -39,12 +45,14 @@
   background: linear-gradient(190deg, #ffc453, #a830bf 75%);
 }
 
+.telegramButton {
+  background: #64a9dc;
+}
+
 .whatsappButton {
   background: linear-gradient(15deg, #28d146, #5efb7a 75%);
 
-  span {
-    font-size: 24px;
-    color: #fff;
+  .text {
     text-shadow: 0 0 11px #12831e;
   }
 }

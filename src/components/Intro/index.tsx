@@ -6,25 +6,21 @@ import styles from './styles.module.scss';
 
 export const Intro: FC = () => {
   return (
-    <section>
-      <Card className={styles.card}>
-        <div className={styles.introHead}>
-          <img src={img} alt="Elya" width="300" />
-          <div className={styles.introHeadCardWrapper}>
-            <Card className={styles.introHeadCard}>
-              <span className={styles.introHeadTextFirst}>{useLang('intro.project.sub')}</span>
-              <span className={styles.introHeadTextSecond}>
-                <span className={styles.introHeadTextSecondEmphasis}>
-                  {useLang('intro.project')}&nbsp;
-                </span>
-                {useLang('intro.author')}
+    <section className={styles.section}>
+      <Card className={styles.sectionCard}>
+        <div className={styles.contentWrapper}>
+          <img className={styles.image} src={img} alt="Elya" width="300" height="289" />
+          <div className={styles.cardWrapper}>
+            <Card className={styles.card}>
+              <span className={styles.projectTitle}>{useLang('intro.title')}</span>
+              <span className={styles.projectName}>
+                {useLang('intro.name')}&nbsp;
               </span>
-              <span className={styles.introHeadTextThird}>{useLang('intro.course.sub')}</span>
-              <span className={styles.introHeadTextFourth}>{useLang('intro.course').toUpperCase()}</span>
+              <span className={styles.projectSub}>{useLang('intro.sub').toUpperCase()}</span>
             </Card>
           </div>
         </div>
-        <p className={styles.introText}>
+        <p className={styles.text}>
           {useLang('intro.text')}
         </p>
       </Card>

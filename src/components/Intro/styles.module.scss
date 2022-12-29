@@ -1,4 +1,8 @@
-.card {
+.section {
+  margin-top: 18px;
+}
+
+.sectionCard {
   position: relative;
 
   &::before {
@@ -12,7 +16,7 @@
   }
 }
 
-.introHead {
+.contentWrapper {
   position: relative;
   display: flex;
   flex-flow: column;
@@ -24,16 +28,15 @@
     flex-flow: initial;
     align-items: initial;
   }
-
-  img {
-    position: relative;
-    z-index: 0;
-    max-width: 300px;
-    border-radius: 5px;
-  }
 }
 
-.introHeadCardWrapper {
+.image {
+  position: relative;
+  z-index: 0;
+  border-radius: 5px;
+}
+
+.cardWrapper {
   position: relative;
   display: flex;
   flex-grow: 1;
@@ -43,7 +46,7 @@
   z-index: 1;
 }
 
-.introHeadCard {
+.card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,7 +56,7 @@
   @media (min-width: 769px) {
     position: absolute;
     right: 0;
-    bottom: 18%;
+    bottom: 13%;
   }
 
   span {
@@ -61,42 +64,28 @@
   }
 }
 
-.introHeadTextFirst {
+.projectTitle {
   font-size: 20px;
   font-weight: 600;
-  line-height: 28px;
+  line-height: 40px;
 }
 
-.introHeadTextSecond {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 30px;
-}
-
-.introHeadTextSecondEmphasis {
+.projectName {
+  font-size: 18px;
   font-weight: 700;
-}
-
-.introHeadTextThird {
-  font-size: 20px;
-  font-weight: 600;
   line-height: 38px;
 }
 
-.introHeadTextFourth {
-  font-size: 22px;
+.projectSub {
+  font-size: 21px;
   font-weight: 700;
-  line-height: 30px;
+  line-height: 32px;
   color: #23303d;
 }
 
-.introText {
+.text {
   margin-top: 24px;
   text-align: center;
   font-size: 22px;
   line-height: 28px;
-
-  @media (min-width: 769px) {
-    line-height: 32px;
-  }
 }

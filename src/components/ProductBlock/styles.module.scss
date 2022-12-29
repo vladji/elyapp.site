@@ -1,0 +1,48 @@
+.title {
+  text-align: center;
+
+  @media (min-width: 481px) {
+    text-align: unset;
+  }
+}
+
+.description {
+  margin-top: 16px;
+}
+
+.subtitle {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+
+  @media (min-width: 481px) {
+    text-align: unset;
+  }
+}
+
+.bulletsWrapper {
+  margin-top: 16px;
+}
+
+.bullet {
+  display: flex;
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+}
+
+.priceWrapper {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.priceValue {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.priceSign {
+  font-weight: 600;
+}
