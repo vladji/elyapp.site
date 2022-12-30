@@ -1,16 +1,16 @@
 .card {
-  padding: 0 0 var(--section-padding-mob);
+  padding: var(--section-padding-mob) 0 var(--section-padding-mob);
 
   @media (min-width: 481px) {
-    padding: 0 0 var(--section-padding-desktop);
+    padding-block: var(--section-padding-desktop) 0 var(--section-padding-desktop);
   }
 }
 
 .title {
-  padding: var(--section-padding-mob);
+  padding-bottom: var(--section-padding-mob);
   text-align: center;
 
   @media (min-width: 481px) {
-    padding: var(--section-padding-desktop);
+    padding-bottom: var(--section-padding-desktop);
   }
 }

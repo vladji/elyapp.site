@@ -16,11 +16,11 @@ export const Intro: FC = () => {
               <span className={styles.projectName}>
                 &laquo;{useLang('intro.name')}&raquo;
               </span>
-              <span className={styles.projectSub}>{useLang('intro.sub').toUpperCase()}</span>
             </Card>
           </div>
         </div>
         <p className={styles.text}>
+          {useLang('intro.text.title')} - <br />
           {useLang('intro.text')}
         </p>
       </Card>

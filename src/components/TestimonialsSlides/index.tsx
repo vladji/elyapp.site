@@ -20,7 +20,6 @@ import img18 from '../../assets/slider/testimonials/IMG_2020.webp';
 import img19 from '../../assets/slider/testimonials/IMG_2021.webp';
 import img20 from '../../assets/slider/testimonials/IMG_2022.webp';
 import img21 from '../../assets/slider/testimonials/IMG_2023.webp';
-import styles from './styles.module.scss';
 
 export const TestimonialsSlides: FC = () => {
   const imgData = [
@@ -29,7 +28,6 @@ export const TestimonialsSlides: FC = () => {
   ];
   return (
     <SliderBlock
-      sliderClassName={styles.slider}
       imgData={imgData}
       title="testimonials.section"
     />

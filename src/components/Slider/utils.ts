@@ -1,5 +1,4 @@
 import { RefObject } from 'react';
-import { Direct } from '../../types';
 
 interface IPlayAnimation {
   stopPosition: number;
@@ -7,7 +6,7 @@ interface IPlayAnimation {
   startTime: number;
   reverse: boolean;
   sliderRef: RefObject<HTMLUListElement>;
-  setNextState: (direct: Direct) => void;
+  setNextState: () => void;
 }
 
 type PlayAnimation = (arg: IPlayAnimation) => void
@@ -48,9 +47,7 @@ export const playAnimation: PlayAnimation = ({
   if (!reverse && Math.abs(nextStep) >= Math.abs(stopPosition)) {
     cancelAnimationFrame(requestID);
     sliderRef.current!.style.transform = `translateX(${stopPosition}px)`;
-
-    const direct = shiftX > 0 ? Direct.prev : Direct.next;
-    setNextState(direct);
+    setNextState();
     return;
   }
 

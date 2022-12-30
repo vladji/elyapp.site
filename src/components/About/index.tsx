@@ -11,8 +11,10 @@ export const About: FC = () => {
         <h2 className={styles.title}>{useLang('about.title')}</h2>
         <div className={styles.content}>
           <p className={styles.text}>
-            {useLang('about.text.p1')}<br />
-            {useLang('about.text.p2')}
+            <span className={styles.textP1}>{useLang('about.text.p1')}</span>
+            {useLang('about.text.p2')}<br />
+            <span className={styles.textP3}>{useLang('about.text.p3')}</span>
+            {useLang('about.text.p4')}
           </p>
           <img className={styles.moodImage} src={img} alt="Elya" width="210" height="315" />
         </div>
