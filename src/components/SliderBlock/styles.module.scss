@@ -8,6 +8,7 @@
 
 .title {
   padding: var(--section-padding-mob);
+  text-align: center;
 
   @media (min-width: 481px) {
     padding: var(--section-padding-desktop);

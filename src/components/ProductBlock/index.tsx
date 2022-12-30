@@ -28,10 +28,10 @@ export const ProductBlock: FC = () => {
             <span>{useLang('product.bul4')}</span>
           </li>
         </ul>
-        <div className={styles.priceWrapper}>
-          <span className={styles.priceValue}>200 000</span>
-          <span className={styles.priceSign}>&nbsp;{useLang('tenge')}</span>
-        </div>
+        {/*<div className={styles.priceWrapper}>*/}
+        {/*  <span className={styles.priceValue}>200 000</span>*/}
+        {/*  <span className={styles.priceSign}>&nbsp;{useLang('tenge')}</span>*/}
+        {/*</div>*/}
       </Card>
     </section>
   );

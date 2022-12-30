@@ -6,7 +6,6 @@ import { Direct } from '../../types';
 import styles from './styles.module.scss';
 
 const NON_APPLICABLE_SHIFT_Y = 120;
-const NON_APPLICABLE_SHIFT_X = 100;
 
 const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, className }) => {
   const sliderRef = useRef<HTMLUListElement>(null);
@@ -67,12 +66,7 @@ const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, classN
 
       if (shiftX === 0) return;
 
-      if (Math.abs(shiftY) > NON_APPLICABLE_SHIFT_Y && Math.abs(shiftX) < NON_APPLICABLE_SHIFT_X) {
-        onPlayAnimation({ shiftX, reverse: true });
-        return;
-      }
-
-      if (Math.abs(shiftX) < NON_APPLICABLE_SHIFT_X) {
+      if (Math.abs(shiftY) > NON_APPLICABLE_SHIFT_Y) {
         onPlayAnimation({ shiftX, reverse: true });
         return;
       }
@@ -125,7 +119,6 @@ const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, classN
       setNextState,
     }));
   };
-
 
   const setSlidesStyles = (clear: boolean) => {
     const index = sliderData.index;

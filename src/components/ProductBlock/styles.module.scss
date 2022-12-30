@@ -8,21 +8,15 @@
 
 .description {
   margin-top: 16px;
+  font-size: 20px;
 }
 
 .subtitle {
   margin-top: 16px;
-  text-align: center;
-  font-size: 22px;
-  font-weight: 600;
-
-  @media (min-width: 481px) {
-    text-align: unset;
-  }
 }
 
 .bulletsWrapper {
-  margin-top: 16px;
+  margin-top: 4px;
 }
 
 .bullet {

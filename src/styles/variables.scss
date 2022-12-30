@@ -1,14 +1,12 @@
 :root {
   // fonts
-  --font-dancing: 'dancing', cursive;
   --font-nunito: 'nunito', sans-serif;
   --font-exo2: 'exo-2-semi-bold', sans-serif;
-  --font-caveat: 'caveat', cursive;
 
   // colors
   --main-text-color: #0a0e11;
   --transparent: #0000;
-  --body-background: #fbfbfb;
+  --body-background: #798579;
   --border-color: #23303d;
   --card-background-color: #fff;
   --antiquewhite: #faebd7;
@@ -20,7 +18,7 @@
 
   // shadows
   --button-shadow: 0 0 3px 0 var(--border-color);
-  --card-shadow: 0 4px 12px 4px #c4c4c485;
+  --card-shadow: 0 4px 12px 4px #071f02c9;
 
   // layout
   --layout-padding-horizontal: 32px;
