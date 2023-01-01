@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useLang } from '../../hooks/useLang';
 import { IconButton } from '../UI/Buttons/IconButton';
-import { WhatsAppIcon } from '../../icons/WhatsAppIcon';
-import { TelegramIconNative } from '../../icons/TelegramIcon';
-import { InstaIcon } from '../../icons/InstaIcon';
+import { WhatsAppIconBw } from '../../icons/WhatsAppIconBw';
+import { TelegramIconBw } from '../../icons/TelegramIconBw';
+import { InstaIconBw } from '../../icons/InstaIconBw';
 import styles from './styles.module.scss';
 
 export const Header: FC = () => {
@@ -12,13 +12,13 @@ export const Header: FC = () => {
       <h1>{useLang('logo')}</h1>
       <div className={styles.nav}>
         <IconButton linkTo="https://wa.me/77028959868">
-          <WhatsAppIcon />
+          <WhatsAppIconBw />
         </IconButton>
         <IconButton linkTo="https://t.me/elya_bai">
-          <TelegramIconNative />
+          <TelegramIconBw />
         </IconButton>
         <IconButton linkTo="https://instagram.com/elyapp.online">
-          <InstaIcon />
+          <InstaIconBw />
         </IconButton>
       </div>
     </header>

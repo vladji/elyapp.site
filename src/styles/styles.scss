@@ -19,10 +19,10 @@ body {
 }
 
 main {
-  margin-bottom: 24px;
+  margin: 24px 0;
 
   @media (min-width: 481px) {
-    margin-bottom: 54px;
+    margin: 24px 0 54px;
   }
 }
 

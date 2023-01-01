@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Card } from '../Card';
-import img from '../../assets/images/elya-intro-0.webp';
+import img from '../../assets/images/elya_intro.jpg';
 import { useLang } from '../../hooks/useLang';
 import styles from './styles.module.scss';
 
@@ -9,7 +9,7 @@ export const Intro: FC = () => {
     <section className={styles.section}>
       <Card className={styles.sectionCard}>
         <div className={styles.contentWrapper}>
-          <img className={styles.image} src={img} alt="Elya" width="300" height="289" />
+          <img className={styles.image} src={img} alt="Elya" width="300" height="334" />
           <div className={styles.cardWrapper}>
             <Card className={styles.card}>
               <span className={styles.projectTitle}>{useLang('intro.title')}</span>

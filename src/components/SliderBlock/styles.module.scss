@@ -2,7 +2,7 @@
   padding: var(--section-padding-mob) 0 var(--section-padding-mob);
 
   @media (min-width: 481px) {
-    padding-block: var(--section-padding-desktop) 0 var(--section-padding-desktop);
+    padding: var(--section-padding-desktop) 0 var(--section-padding-desktop);
   }
 }
 
