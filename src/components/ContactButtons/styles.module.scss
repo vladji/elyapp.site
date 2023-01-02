@@ -30,6 +30,7 @@
   }
 
   .text {
+    font-family: var(--font-nunito-semi-bold);
     font-size: 18px;
     color: #fff;
   }
@@ -53,6 +54,6 @@
   background: linear-gradient(15deg, #28d146, #5efb7a 75%);
 
   .text {
-    text-shadow: 0 0 3px #12831e;
+    text-shadow: 0 0 1px #02b815;
   }
 }
