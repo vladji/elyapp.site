@@ -1,17 +1,23 @@
 @font-face {
   font-family: 'exo-2-semi-bold';
-  src: url('../assets/fonts/Exo_2/static/Exo2-SemiBold.ttf') format('woff2');
+  src: url('../assets/fonts/Exo_2/static/Exo2-SemiBold.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'nunito';
-  src: url('../assets/fonts/Nunito_Sans/NunitoSans-Regular.ttf') format('woff2');
+  src: url('../assets/fonts/Nunito_Sans/NunitoSans-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'nunito-semi-bold';
-  src: url('../assets/fonts/Nunito_Sans/NunitoSans-SemiBold.ttf') format('woff2');
+  src: url('../assets/fonts/Nunito_Sans/NunitoSans-SemiBold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'source-semi-bold';
+  src: url('../assets/fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf') format('truetype');
   font-display: swap;
 }

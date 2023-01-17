@@ -14,14 +14,15 @@ export const ProductBlock: FC = () => {
             <li>
               <div className={styles.itemDetail}>
                 <span>-&nbsp;</span>
-                <span>
-                    работа с МАК (метафоричкские ассоциативеные карты) + коуч сессия для глубинной проработки и решения проблемы лишнего веса в корне
-                </span>
+                <span>{useLang('product.var1.description.1')}</span>
               </div>
             </li>
           </ul>
           <div className={styles.itemConditions}>
-            <p className={styles.itemPeriod}>{useLang('product.var1.period')}</p>
+            <p className={styles.itemPeriod}>{useLang('product.var1.period')}
+              <br />
+              <span>{useLang('product.var1.period.clarify')}</span>
+            </p>
             <p className={styles.itemPrice}>{useLang('product.var1.price')}</p>
           </div>
         </div>
@@ -33,7 +34,7 @@ export const ProductBlock: FC = () => {
                 <span>-&nbsp;</span>
                 <span>
                     проработка пищевого поведения и лишнего веса
-                  </span>
+                </span>
               </div>
             </li>
             <li>
