@@ -1,4 +1,5 @@
 .title {
+  margin-bottom: 16px;
   text-align: center;
 
   @media (min-width: 481px) {
@@ -6,25 +7,41 @@
   }
 }
 
-.description {
-  margin-top: 16px;
-  font-size: 20px;
-}
-
-.subtitle {
-  margin-top: 16px;
-}
-
-.bulletsWrapper {
-  margin-top: 4px;
-}
-
-.bullet {
-  display: flex;
+.item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
 
   &:not(:last-child) {
-    margin-bottom: 8px;
+    border-bottom: 1px dashed var(--border-color);
   }
+}
+
+.itemDetail {
+  display: flex;
+}
+
+.itemTitle {
+  margin-bottom: 12px;
+  font-family: var(--font-nunito-semi-bold);
+  font-size: 19px;
+  text-align: center;
+}
+
+.itemConditions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.itemPeriod {
+  font-family: var(--font-nunito-semi-bold);
+}
+
+.itemPrice {
+  font-family: var(--font-nunito-semi-bold);
+  text-align: center;
+  color: var(--deep-green);
 }
 
 .priceWrapper {
