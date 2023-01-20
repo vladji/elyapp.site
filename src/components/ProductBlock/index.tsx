@@ -72,7 +72,10 @@ export const ProductBlock: FC = () => {
           </div>
         </div>
         <div className={styles.item}>
-          <h3 className={styles.itemTitle}>{useLang('product.var3')}</h3>
+          <h3 className={styles.itemTitle}>
+            {useLang('product.var3.pre.title')}<br />
+            &laquo;{useLang('product.var3.title')}&raquo;
+          </h3>
           <ul>
             <li>
               <div className={styles.itemDetail}>

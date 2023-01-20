@@ -1,5 +1,9 @@
-import { FC } from 'react';
-import { SliderBlock } from '../SliderBlock';
+import { FC, lazy, Suspense } from 'react';
+import { useIntersection } from '../../hooks/useIntersection';
+import { Fallback } from '../Slider/Fallback';
+import { Card } from '../Card';
+import { useLang } from '../../hooks/useLang';
+
 import img1 from '../../assets/slider/results/IMG_1983.webp';
 import img2 from '../../assets/slider/results/IMG_1984.webp';
 import img3 from '../../assets/slider/results/IMG_1985.webp';
@@ -18,11 +22,33 @@ import img15 from '../../assets/slider/results/IMG_1998.webp';
 import img16 from '../../assets/slider/results/IMG_2001.webp';
 import img17 from '../../assets/slider/results/IMG_2002.webp';
 
+import styles from './styles.module.scss';
+
+const Slider = lazy(() => import('../Slider'));
+
 export const ResultSlides: FC = () => {
+  const { inView, ref } = useIntersection();
+  const sliderTitle = useLang('results.section');
+
   const imgData = [
     img16, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img17
   ];
+
   return (
-    <SliderBlock imgData={imgData} title="results.section" />
+    <>
+      <div ref={ref} />
+      {inView &&
+        <section>
+          <Card className={styles.card}>
+            <h2 className={styles.title}>{sliderTitle}</h2>
+            <div className={styles.resultSliderWrapper}>
+              <Suspense fallback={<Fallback image={img16} className={styles.fallback} />}>
+                <Slider imgData={imgData} />
+              </Suspense>
+            </div>
+          </Card>
+        </section>
+      }
+    </>
   );
 };

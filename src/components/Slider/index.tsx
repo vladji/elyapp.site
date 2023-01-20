@@ -73,7 +73,6 @@ const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, classN
           return;
         }
 
-        sliderData.direct = shiftX > 0 ? Direct.prev : Direct.next;
         onPlayAnimation({ shiftX, reverse: false });
       }
     };
@@ -112,6 +111,7 @@ const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, classN
       const startTime: number = Date.now();
       const sliderWidth: number = sliderRef.current!.offsetWidth;
       const stopPosition: number = shiftX < 0 ? -sliderWidth : sliderWidth;
+      sliderData.direct = shiftX > 0 ? Direct.prev : Direct.next;
 
       requestAnimationFrame(() => playAnimation({
         stopPosition,
@@ -124,7 +124,6 @@ const Slider: FC<{ imgData: string[], className?: string }> = ({ imgData, classN
     };
 
     const setSlidesStyles = (direct: Direct) => {
-
       const slides = sliderRef.current?.children as HTMLCollectionOf<HTMLElement>;
       const pointers = pointerRef.current?.children as HTMLCollectionOf<HTMLElement>;
 

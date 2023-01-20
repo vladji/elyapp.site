@@ -1,3 +1,34 @@
-.slider {
-  height: 600px;
+.card {
+  padding: var(--section-padding-mob) 0 var(--section-padding-mob);
+
+  @media (min-width: 481px) {
+    padding: var(--section-padding-desktop) 0 var(--section-padding-desktop);
+  }
+}
+
+.title {
+  padding-bottom: var(--section-padding-mob);
+  text-align: center;
+
+  @media (min-width: 481px) {
+    padding-bottom: var(--section-padding-desktop);
+  }
+}
+
+.testimonialsSliderWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 580px;
+
+  @media (min-width: 481px) {
+    height: 720px;
+  }
+}
+
+.fallback {
+  height: 548px;
+
+  @media (min-width: 481px) {
+    height: 651px;
+  }
 }

@@ -14,3 +14,21 @@
     padding-bottom: var(--section-padding-desktop);
   }
 }
+
+.resultSliderWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 432px;
+
+  @media (min-width: 481px) {
+    height: 665px;
+  }
+}
+
+.fallback {
+  height: 400px;
+
+  @media (min-width: 481px) {
+    height: 596px;
+  }
+}
