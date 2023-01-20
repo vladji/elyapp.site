@@ -7,7 +7,7 @@ export const Fallback: FC<{ image: any, className?: string }> = ({ image, classN
   return (
     <div className={cn(styles.fallback, className)}>
       <Spinner />
-      <img src={image} alt="slider image" />
+      <img src={image} alt="results" />
     </div>
   );
 };
